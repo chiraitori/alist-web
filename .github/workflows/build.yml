@@ -44,14 +44,22 @@ jobs:
           cd ..
                 
 
-      # 6. Attach artifact to release
-      - name: Attach Artifact to Release
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Compress dist to ZIP and TAR.GZ
+        run: |
+          zip -r dist.zip ./dist
+          tar -czf dist.tar.gz ./dist
+
+      # 6. Upload dist.zip as an artifact
+      - name: Upload dist.zip
+        uses: actions/upload-artifact@v3
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./alist-web/dist
-          asset_name: dist.zip
-          asset_content_type: application/zip
+          name: dist-zip
+          path: dist.zip
+
+      # 7. Upload dist.tar.gz as an artifact
+      - name: Upload dist.tar.gz
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-tar-gz
+          path: dist.tar.gz
+     
