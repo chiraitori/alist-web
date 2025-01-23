@@ -43,15 +43,6 @@ jobs:
           pnpm build
           cd ..
                 
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: v${{ github.run_number }}
-          release_name: Release v${{ github.run_number }}
-          draft: false
-          prerelease: false
 
       # 6. Attach artifact to release
       - name: Attach Artifact to Release
