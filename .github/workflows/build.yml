@@ -45,8 +45,8 @@ jobs:
 
       - name: Compress dist to ZIP and TAR.GZ
         run: |
-          zip -r dist.zip ./dist
-          tar -czf dist.tar.gz ./dist
+          zip -r dist.zip dist
+          tar -czf dist.tar.gz dist
 
       # 6. Upload dist.zip as an artifact
       - name: Upload dist.zip
