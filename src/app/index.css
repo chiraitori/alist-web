@@ -43,7 +43,7 @@ body {
 }
 
 .hope-ui-dark ::-webkit-scrollbar-thumb {
-  background-color: #2d2d2d;
+  background-color: #2d2d2f;
 }
 
 .hope-ui-dark ::-webkit-scrollbar-thumb:vertical:hover {
