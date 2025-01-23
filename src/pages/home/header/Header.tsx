@@ -33,10 +33,15 @@ export const Header = () => {
   return (
     <Center
       {...stickyProps}
-      bgColor="$background"
       class="header"
       w="$full"
-      // shadow="$md"
+      css={{
+        "background": "rgba(var(--hope-colors-background), 0.4)",
+        "backdrop-filter": "blur(12px)",
+        "-webkit-backdrop-filter": "blur(12px)",
+        "border-bottom": "1px solid rgba(255, 255, 255, 0.1)",
+        "box-shadow": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+      }}
     >
       <Container>
         <HStack
@@ -57,23 +62,33 @@ export const Header = () => {
             <Show when={objStore.state === State.Folder}>
               <Show when={getSetting("search_index") !== "none"}>
                 <HStack
-                  bg="$neutral4"
                   w="$32"
                   p="$1"
                   rounded="$md"
                   justifyContent="space-between"
-                  border="2px solid transparent"
                   cursor="pointer"
                   color={getMainColor()}
-                  bgColor={changeColor(getMainColor(), { alpha: 0.15 })}
+                  css={{
+                    "background": "rgba(var(--hope-colors-background), 0.3)",
+                    "backdrop-filter": "blur(8px)",
+                    "-webkit-backdrop-filter": "blur(8px)",
+                    "border": "1px solid rgba(255, 255, 255, 0.1)",
+                  }}
                   _hover={{
-                    bgColor: changeColor(getMainColor(), { alpha: 0.2 }),
+                    background: "rgba(var(--hope-colors-background), 0.5)",
+                    borderColor: "rgba(255, 255, 255, 0.2)"
                   }}
                   onClick={() => {
                     bus.emit("tool", "search")
                   }}
                 >
-                  <Icon as={BsSearch} />
+                  <Icon 
+                    as={BsSearch} 
+                    boxSize="$5"
+                    p="$1"
+                    rounded="$full"
+                    bg="rgba(var(--hope-colors-background), 0.3)"
+                  />
                   <HStack>
                     {isMac ? <Kbd>Cmd</Kbd> : <Kbd>Ctrl</Kbd>}
                     <Kbd>K</Kbd>

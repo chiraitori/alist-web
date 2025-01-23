@@ -12,10 +12,17 @@ body {
   background-position: center;
 }
 
+
 ::-webkit-scrollbar-corner,
 ::-webkit-scrollbar-track {
-  background-color: #e2e2e2;
-  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2); /* Transparent white */
+  border-radius: 16px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Blur the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari compatibility */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  padding: 20px; /* Inner padding */
+  color: #fff; /* Text color for contrast */
 }
 
 ::-webkit-scrollbar-thumb {

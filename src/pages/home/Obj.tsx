@@ -52,9 +52,15 @@ export const Obj = () => {
       class="obj-box"
       w="$full"
       rounded="$xl"
-      bgColor={cardBg()}
+      bgColor={`rgba(${useColorModeValue("255,255,255,0.4", "23,23,23,0.4")})`}
       p="$2"
       shadow="$lg"
+      css={{
+        "backdrop-filter": "blur(12px)",
+        "-webkit-backdrop-filter": "blur(12px)",
+        "border": "1px solid rgba(255, 255, 255, 0.1)",
+        "box-shadow": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+      }}
       spacing="$2"
     >
       <Suspense fallback={<FullLoading />}>
