@@ -69,7 +69,7 @@ jobs:
       - name: Upload dist files
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.MY_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: dev
           directory: web-dist
           repository: alist-org/web-dist
