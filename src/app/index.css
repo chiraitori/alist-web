@@ -12,7 +12,6 @@ body {
   background-position: center;
 }
 
-
 ::-webkit-scrollbar-corner,
 ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.2); /* Transparent white */

@@ -36,7 +36,7 @@ export const Header = () => {
       class="header"
       w="$full"
       css={{
-        "background": "rgba(var(--hope-colors-background), 0.4)",
+        background: "rgba(var(--hope-colors-background), 0.4)",
         "backdrop-filter": "blur(12px)",
         "-webkit-backdrop-filter": "blur(12px)",
         "border-bottom": "1px solid rgba(255, 255, 255, 0.1)",
@@ -69,21 +69,21 @@ export const Header = () => {
                   cursor="pointer"
                   color={getMainColor()}
                   css={{
-                    "background": "rgba(var(--hope-colors-background), 0.3)",
+                    background: "rgba(var(--hope-colors-background), 0.3)",
                     "backdrop-filter": "blur(8px)",
                     "-webkit-backdrop-filter": "blur(8px)",
-                    "border": "1px solid rgba(255, 255, 255, 0.1)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
                   }}
                   _hover={{
                     background: "rgba(var(--hope-colors-background), 0.5)",
-                    borderColor: "rgba(255, 255, 255, 0.2)"
+                    borderColor: "rgba(255, 255, 255, 0.2)",
                   }}
                   onClick={() => {
                     bus.emit("tool", "search")
                   }}
                 >
-                  <Icon 
-                    as={BsSearch} 
+                  <Icon
+                    as={BsSearch}
                     boxSize="$5"
                     p="$1"
                     rounded="$full"
