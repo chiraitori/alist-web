@@ -35,14 +35,6 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - name: Checkout dist repo
-        uses: actions/checkout@v4
-        with:
-          repository: alist-org/web-dist
-          ref: dev
-          path: web-dist
-          persist-credentials: false
-          fetch-depth: 0
 
       - name: Build
         run: |
@@ -60,12 +52,22 @@ jobs:
           git config --local user.name "Noah Hsu"
           git commit --amend -m "upload dev dist"
           cd ..
-
-      - name: Upload dist files
-        uses: ad-m/github-push-action@master
+          
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: dev
-          directory: web-dist
-          repository: chiraitori/jhjh
-          force: true
+          tag_name: v${{ github.run_number }}
+          release_name: Release v${{ github.run_number }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Upload Release Assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./alist-web/dist
+          asset_name: dist.zip
+          asset_content_type: application/zip
